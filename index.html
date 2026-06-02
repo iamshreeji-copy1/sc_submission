@@ -1,209 +1,685 @@
+bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paper ID: 1245</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Supplementary demo page for Paper ID 1245: augmented dysarthric speech severity classification audio samples and t-SNE visualizations." />
+  <title>Paper ID 1245 | Supplementary Audio Samples</title>
 
-<style>
-:root {
-    --primary:#2c3e50;
-    --secondary:#3498db;
-    --bg:#f8f9fa;
-}
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8fb;
+      --surface: #ffffff;
+      --surface-soft: #f1f5f9;
+      --text: #172033;
+      --muted: #5f6b7a;
+      --border: #dbe2ea;
+      --primary: #12355b;
+      --accent: #2563eb;
+      --accent-soft: #e8f0ff;
+      --warning-bg: #fff8e1;
+      --warning-border: #f3d47a;
+      --warning-text: #684b00;
+      --shadow: 0 22px 60px rgba(20, 30, 50, 0.10);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --transition: 220ms ease;
+    }
 
-body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
-    background:var(--bg);
-    margin:0;
-    padding:20px;
-}
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --surface: #151b23;
+      --surface-soft: #202938;
+      --text: #f4f7fb;
+      --muted: #a9b4c2;
+      --border: #2d3747;
+      --primary: #dbeafe;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.16);
+      --warning-bg: rgba(250, 204, 21, 0.13);
+      --warning-border: rgba(250, 204, 21, 0.35);
+      --warning-text: #fde68a;
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.36);
+    }
 
-.container{
-    width:95%;
-    max-width:1600px;
-    margin:auto;
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 3px 15px rgba(0,0,0,0.1);
-}
+    *, *::before, *::after { box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
 
-header{
-    text-align:center;
-    border-bottom:1px solid #ddd;
-    padding-bottom:20px;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 34rem),
+        linear-gradient(180deg, var(--bg), var(--bg));
+      color: var(--text);
+      line-height: 1.6;
+      transition: background var(--transition), color var(--transition);
+    }
 
-h1{color:var(--primary);margin-bottom:5px;}
-p{color:#555;}
+    a { color: inherit; }
 
-.tab-nav{
-    display:flex;
-    border-bottom:2px solid #ddd;
-    margin-top:25px;
-}
+    .page-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
 
-.tab-nav button{
-    background:none;
-    border:none;
-    padding:14px 20px;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    color:#555;
-}
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 5vw, 56px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--surface), var(--surface-soft));
+      box-shadow: var(--shadow);
+      animation: fadeUp 600ms ease both;
+    }
 
-.tab-nav button.active{
-    color:var(--secondary);
-    border-bottom:3px solid var(--secondary);
-}
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -90px -140px auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.18), transparent 65%);
+      pointer-events: none;
+    }
 
-.dataset-content{display:none;}
-.dataset-content.active{display:block;}
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:15px;
-}
+    .journal-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 650;
+      letter-spacing: 0.01em;
+    }
 
-th,td{
-    border-bottom:1px solid #eee;
-    padding:12px;
-}
+    .journal-tag::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px var(--accent-soft);
+    }
 
-th{
-    background:#f1f1f1;
-    color:var(--primary);
-}
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 9px 13px;
+      background: var(--surface);
+      color: var(--text);
+      font: inherit;
+      font-size: 0.94rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    }
 
-audio{width:260px;}
+    .theme-toggle:hover { transform: translateY(-1px); border-color: var(--accent); }
+    .theme-toggle:focus-visible, .tab-button:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 3px; }
 
-.notice-box{
-    margin-top:20px;
-    padding:20px;
-    background:#fff3cd;
-    border:1px solid #ffeeba;
-    color:#856404;
-    border-radius:6px;
-    text-align:center;
-    font-weight:bold;
-}
-</style>
+    .hero h1 {
+      margin: 0 0 12px;
+      max-width: 940px;
+      color: var(--primary);
+      font-size: clamp(2rem, 5vw, 4.15rem);
+      line-height: 1.04;
+      letter-spacing: -0.055em;
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      max-width: 820px;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 2vw, 1.25rem);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .meta-card {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.58);
+      backdrop-filter: blur(10px);
+    }
+
+    html[data-theme="dark"] .meta-card { background: rgba(255, 255, 255, 0.04); }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .meta-value { color: var(--text); font-weight: 750; }
+
+    .content-card {
+      margin-top: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: fadeUp 700ms 80ms ease both;
+    }
+
+    .tab-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      backdrop-filter: blur(14px);
+      scrollbar-width: thin;
+    }
+
+    .tab-button {
+      flex: 0 0 auto;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 11px 16px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transition: color var(--transition), background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .tab-button:hover { color: var(--text); transform: translateY(-1px); }
+
+    .tab-button[aria-selected="true"] {
+      border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .panel {
+      display: none;
+      padding: clamp(20px, 4vw, 34px);
+      animation: panelEnter 280ms ease both;
+    }
+
+    .panel.active { display: block; }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: var(--primary);
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      letter-spacing: -0.035em;
+    }
+
+    .section-note {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+    }
+
+    .sample-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    table {
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+      background: var(--surface);
+    }
+
+    caption {
+      padding: 14px 16px;
+      text-align: left;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    th, td {
+      padding: 15px 16px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: var(--surface-soft);
+      color: var(--primary);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    tbody tr { transition: background var(--transition), transform var(--transition); }
+    tbody tr:hover { background: var(--accent-soft); }
+
+    .sample-id {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .sample-id::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    audio {
+      width: min(100%, 275px);
+      max-width: 100%;
+    }
+
+    .notice-box {
+      margin-top: 16px;
+      padding: 20px;
+      border: 1px solid var(--warning-border);
+      border-radius: var(--radius-md);
+      background: var(--warning-bg);
+      color: var(--warning-text);
+      font-weight: 760;
+    }
+
+    .figure-grid {
+      display: grid;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    figure {
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface-soft);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    figure:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+      box-shadow: 0 16px 42px rgba(20, 30, 50, 0.12);
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      max-height: 680px;
+      object-fit: contain;
+      background: #ffffff;
+    }
+
+    figcaption {
+      padding: 13px 16px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .footer-note {
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      text-align: center;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes panelEnter {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 860px) {
+      .page-shell { width: min(100% - 20px, 1180px); padding-top: 10px; }
+      .hero { padding: 24px; border-radius: 20px; }
+      .top-bar { align-items: flex-start; flex-direction: column; }
+      .meta-grid { grid-template-columns: 1fr; }
+      .section-heading { align-items: flex-start; flex-direction: column; }
+      .tab-nav { top: 0; }
+      .panel { padding: 18px; }
+    }
+
+    @media (max-width: 640px) {
+      .sample-table-wrap {
+        border: 0;
+        overflow: visible;
+      }
+
+      table, thead, tbody, tr, th, td { display: block; width: 100%; min-width: 0; }
+      table { background: transparent; }
+      caption { padding: 0 0 12px; }
+      thead { display: none; }
+
+      tr {
+        margin-bottom: 14px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        background: var(--surface);
+        overflow: hidden;
+      }
+
+      td {
+        display: grid;
+        grid-template-columns: 104px 1fr;
+        gap: 12px;
+        align-items: center;
+        padding: 13px 14px;
+      }
+
+      td::before {
+        content: attr(data-label);
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 850;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      td:first-child {
+        grid-template-columns: 1fr;
+        background: var(--surface-soft);
+      }
+
+      td:first-child::before { content: none; }
+      audio { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 1ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div class="container">
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="top-bar">
+        <span class="journal-tag">Supplementary Material · Speech Communication Submission</span>
+        <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme" id="themeToggle">
+          <span aria-hidden="true" id="themeIcon">🌙</span>
+          <span id="themeText">Dark mode</span>
+        </button>
+      </div>
 
-<header>
-<h1>Paper ID: 1245</h1>
-<p><b>Demo Audio Samples from the Augmented Dysarthric Speech Severity Classification Dataset</b></p>
-</header>
+      <h1 id="page-title">Paper ID 1245: Demo Audio Samples</h1>
+      <p class="hero-subtitle">
+        Supplementary audio examples and embedding visualizations for an augmented dysarthric speech severity classification dataset.
+      </p>
 
-<div class="tab-nav">
-<button class="tab-btn active" onclick="openTab(event,'TORGO')">TORGO</button>
-<button class="tab-btn" onclick="openTab(event,'UA')">UA-SPEECH</button>
-<button class="tab-btn" onclick="openTab(event,'DAU')">DAU-KDAH</button>
-<button class="tab-btn" onclick="openTab(event,'TSNE')">t-SNE Plots</button>
-</div>
+      <div class="meta-grid" aria-label="Page summary">
+        <div class="meta-card">
+          <span class="meta-label">Datasets</span>
+          <span class="meta-value">TORGO, UA-Speech, DAU-KDAH</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Compared speech</span>
+          <span class="meta-value">Original, HiFi-GAN, BigVGAN</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Visualization</span>
+          <span class="meta-value">t-SNE of WavLM embeddings</span>
+        </div>
+      </div>
+    </section>
 
-<!-- ================= TORGO ================= -->
-<div id="TORGO" class="dataset-content active">
-<h2>TORGO</h2>
-<table>
-<tr><th>Sample</th><th>Original</th><th>HiFi-GAN</th><th>BigVGAN</th></tr>
+    <section class="content-card" aria-label="Supplementary samples and visualizations">
+      <nav class="tab-nav" role="tablist" aria-label="Dataset navigation">
+        <button class="tab-button" id="tab-torgo" role="tab" type="button" aria-controls="panel-torgo" aria-selected="true">TORGO</button>
+        <button class="tab-button" id="tab-ua" role="tab" type="button" aria-controls="panel-ua" aria-selected="false">UA-Speech</button>
+        <button class="tab-button" id="tab-dau" role="tab" type="button" aria-controls="panel-dau" aria-selected="false">DAU-KDAH</button>
+        <button class="tab-button" id="tab-tsne" role="tab" type="button" aria-controls="panel-tsne" aria-selected="false">t-SNE plots</button>
+      </nav>
 
-<tr>
-<td>Sev_1_F04_0230</td>
-<td><audio controls><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230.wav"></audio></td>
-<td><audio controls><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230_hifigan.wav"></audio></td>
-<td><audio controls><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230_bigvgan.wav"></audio></td>
-</tr>
+      <article class="panel active" id="panel-torgo" role="tabpanel" aria-labelledby="tab-torgo">
+        <div class="section-heading">
+          <div>
+            <h2>TORGO audio samples</h2>
+            <p class="section-note">Representative examples comparing original dysarthric speech with HiFi-GAN and BigVGAN generated speech.</p>
+          </div>
+        </div>
 
-<tr>
-<td>Sev_1_F04_0231</td>
-<td><audio controls><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231.wav"></audio></td>
-<td><audio controls><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231_hifigan.wav"></audio></td>
-<td><audio controls><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231_bigvgan.wav"></audio></td>
-</tr>
+        <div class="sample-table-wrap">
+          <table>
+            <caption>TORGO sample-level audio comparison.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Sample</th>
+                <th scope="col">Original</th>
+                <th scope="col">HiFi-GAN</th>
+                <th scope="col">BigVGAN</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="sample-id">Sev_1_F04_0230</span></td>
+                <td data-label="Original"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+              </tr>
+              <tr>
+                <td><span class="sample-id">Sev_1_F04_0231</span></td>
+                <td data-label="Original"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+              </tr>
+              <tr>
+                <td><span class="sample-id">Sev_1_F04_0250</span></td>
+                <td data-label="Original"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
 
-<tr>
-<td>Sev_1_F04_0250</td>
-<td><audio controls><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250.wav"></audio></td>
-<td><audio controls><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250_hifigan.wav"></audio></td>
-<td><audio controls><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250_bigvgan.wav"></audio></td>
-</tr>
-</table>
-</div>
+      <article class="panel" id="panel-ua" role="tabpanel" aria-labelledby="tab-ua" tabindex="0">
+        <div class="section-heading">
+          <div>
+            <h2>UA-Speech audio samples</h2>
+            <p class="section-note">Audio examples from UA-Speech, organized by sample identifier and vocoder condition.</p>
+          </div>
+        </div>
 
-<!-- ================= UA-SPEECH ================= -->
-<div id="UA" class="dataset-content">
-<h2>UA-SPEECH</h2>
-<table>
-<tr><th>Sample</th><th>Original</th><th>HiFi-GAN</th><th>BigVGAN</th></tr>
+        <div class="sample-table-wrap">
+          <table>
+            <caption>UA-Speech sample-level audio comparison.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Sample</th>
+                <th scope="col">Original</th>
+                <th scope="col">HiFi-GAN</th>
+                <th scope="col">BigVGAN</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="sample-id">F05_B1_C1_M3</span></td>
+                <td data-label="Original"><audio controls preload="metadata"><source src="samples/UA-SPEECH/F05_B1_C1_M3.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/F05_B1_C1_M3_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/F05_B1_C1_M3_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+              </tr>
+              <tr>
+                <td><span class="sample-id">M09_B1_CW63_M3</span></td>
+                <td data-label="Original"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B1_CW63_M3.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B1_CW63_M3_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B1_CW63_M3_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+              </tr>
+              <tr>
+                <td><span class="sample-id">M09_B3_CW92_M3</span></td>
+                <td data-label="Original"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B3_CW92_M3.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B3_CW92_M3_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B3_CW92_M3_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
 
-<tr>
-<td>F05_B1_C1_M3</td>
-<td><audio controls><source src="samples/UA-SPEECH/F05_B1_C1_M3.wav"></audio></td>
-<td><audio controls><source src="samples/UA-SPEECH/F05_B1_C1_M3_hifigan.wav"></audio></td>
-<td><audio controls><source src="samples/UA-SPEECH/F05_B1_C1_M3_bigvgan.wav"></audio></td>
-</tr>
+      <article class="panel" id="panel-dau" role="tabpanel" aria-labelledby="tab-dau" tabindex="0">
+        <div class="section-heading">
+          <div>
+            <h2>DAU-KDAH audio samples</h2>
+            <p class="section-note">The DAU-KDAH dataset is listed for completeness while respecting access restrictions.</p>
+          </div>
+        </div>
+        <div class="notice-box" role="note">
+          DAU-KDAH audio samples are not distributed on this page because of restrictions on medical data access.
+        </div>
+      </article>
 
-<tr>
-<td>M09_B1_CW63_M3</td>
-<td><audio controls><source src="samples/UA-SPEECH/M09_B1_CW63_M3.wav"></audio></td>
-<td><audio controls><source src="samples/UA-SPEECH/M09_B1_CW63_M3_hifigan.wav"></audio></td>
-<td><audio controls><source src="samples/UA-SPEECH/M09_B1_CW63_M3_bigvgan.wav"></audio></td>
-</tr>
+      <article class="panel" id="panel-tsne" role="tabpanel" aria-labelledby="tab-tsne" tabindex="0">
+        <div class="section-heading">
+          <div>
+            <h2>t-SNE visualization of WavLM embeddings</h2>
+            <p class="section-note">
+              Across TORGO, DAU-KDAH, and UA-Speech, BigVGAN and HiFi-GAN remain close to the original dysarthric speech in the t-SNE space, indicating preservation of prosodic and linguistic characteristics such as timing, rhythm, and imperfect articulation. In contrast, XTTS forms a more separated cluster, suggesting a tendency to normalize speech patterns and reduce dysarthria-specific cues.
+            </p>
+          </div>
+        </div>
 
-<tr>
-<td>M09_B3_CW92_M3</td>
-<td><audio controls><source src="samples/UA-SPEECH/M09_B3_CW92_M3.wav"></audio></td>
-<td><audio controls><source src="samples/UA-SPEECH/M09_B3_CW92_M3_hifigan.wav"></audio></td>
-<td><audio controls><source src="samples/UA-SPEECH/M09_B3_CW92_M3_bigvgan.wav"></audio></td>
-</tr>
-</table>
-</div>
+        <div class="figure-grid">
+          <figure>
+            <img src="tsne_TORGO.png" alt="t-SNE visualization for TORGO WavLM embeddings" loading="lazy" />
+            <figcaption>TORGO: WavLM embedding t-SNE visualization.</figcaption>
+          </figure>
+          <figure>
+            <img src="tsne_KDAH.png" alt="t-SNE visualization for DAU-KDAH WavLM embeddings" loading="lazy" />
+            <figcaption>DAU-KDAH: WavLM embedding t-SNE visualization.</figcaption>
+          </figure>
+          <figure>
+            <img src="tsne_UACorpus.png" alt="t-SNE visualization for UA-Speech WavLM embeddings" loading="lazy" />
+            <figcaption>UA-Speech: WavLM embedding t-SNE visualization.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
 
-<!-- ================= DAU-KDAH ================= -->
-<div id="DAU" class="dataset-content">
-<h2>DAU-KDAH</h2>
-<div class="notice-box">
-DAU-KDAH samples are unavailable due to restrictions on medical data access.
-</div>
-</div>
+    <p class="footer-note">Prepared as a professional, responsive supplementary webpage for manuscript review.</p>
+  </main>
 
-    <!-- ================= t-SNE ================= -->
-<div id="TSNE" class="dataset-content">
-<h2>t-SNE Visualization (WavLM Embeddings)</h2>
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const themeText = document.getElementById('themeText');
+    const themeIcon = document.getElementById('themeIcon');
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
 
-<p style="max-width:900px;line-height:1.6;color:#444;">
-Across TORGO, KDAH, and UA-Speech, BigVGAN and HiFiGAN stay close to the original dysarthric speech in the t-SNE space, showing that they preserve key prosodic and linguistic traits such as timing, rhythm, and imperfect articulation. Their strong overlap with real data suggests they keep the speech patterns needed for severity analysis. In contrast, XTTS forms a clearly separate cluster, meaning it smooths out these cues and produces more fluent, normalized speech, which no longer reflects the true dysarthric speaking style.
-</p>
+    function setTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('speech-demo-theme', theme);
+      const dark = theme === 'dark';
+      themeText.textContent = dark ? 'Light mode' : 'Dark mode';
+      themeIcon.textContent = dark ? '☀️' : '🌙';
+    }
 
-<h3>TORGO</h3>
-<img src="tsne_TORGO.png" style="width:100%;max-width:900px;border:1px solid #ccc;border-radius:6px;margin-bottom:25px;">
+    setTheme(localStorage.getItem('speech-demo-theme') || 'light');
 
-<h3>DAU-KDAH</h3>
-<img src="tsne_KDAH.png" style="width:100%;max-width:900px;border:1px solid #ccc;border-radius:6px;margin-bottom:25px;">
+    toggle.addEventListener('click', () => {
+      const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      setTheme(nextTheme);
+    });
 
-<h3>UA-Speech</h3>
-<img src="tsne_UACorpus.png" style="width:100%;max-width:900px;border:1px solid #ccc;border-radius:6px;margin-bottom:25px;">
-</div>
+    function activateTab(tab, moveFocus = false) {
+      tabs.forEach(item => item.setAttribute('aria-selected', String(item === tab)));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === tab.getAttribute('aria-controls')));
+      if (moveFocus) tab.focus();
+    }
 
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', event => {
+        const currentIndex = tabs.indexOf(tab);
+        let nextIndex = null;
 
-</div>
+        if (event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = tabs.length - 1;
 
-<script>
-function openTab(evt,name){
-document.querySelectorAll(".dataset-content").forEach(x=>x.classList.remove("active"));
-document.querySelectorAll(".tab-btn").forEach(x=>x.classList.remove("active"));
-document.getElementById(name).classList.add("active");
-evt.currentTarget.classList.add("active");
-}
-</script>
-
+        if (nextIndex !== null) {
+          event.preventDefault();
+          activateTab(tabs[nextIndex], true);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+HTML
+python - <<'PY'
+from pathlib import Path
+import zipfile
+html = Path('/mnt/data/speech_communication_repaired_site.html')
+zip_path = Path('/mnt/data/speech_communication_repaired_site.zip')
+with zipfile.ZipFile(zip_path, 'w', compression=zipfile.ZIP_DEFLATED) as z:
+    z.write(html, arcname='index.html')
+print(html.stat().st_size, zip_path.stat().st_size)
+PY
