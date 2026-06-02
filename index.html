@@ -1,11 +1,10 @@
-bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Supplementary demo page for Paper ID 1245: augmented dysarthric speech severity classification audio samples and t-SNE visualizations." />
-  <title>Paper ID 1245 | Supplementary Audio Samples</title>
+  <meta name="description" content="Supplementary demo page for augmented dysarthric speech severity classification audio samples and t-SNE visualizations." />
+  <title>Supplementary Audio Samples | Speech Communication</title>
 
   <style>
     :root {
@@ -261,6 +260,31 @@ bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
       color: var(--muted);
     }
 
+    .focus-note {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: color-mix(in srgb, var(--accent-soft) 72%, var(--surface));
+      color: var(--text);
+      line-height: 1.6;
+      box-shadow: 0 10px 24px rgba(20, 30, 50, 0.06);
+    }
+
+    .focus-note span {
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .column-subtitle {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.03em;
+      text-transform: none;
+    }
+
     .sample-table-wrap {
       overflow-x: auto;
       border: 1px solid var(--border);
@@ -421,7 +445,7 @@ bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
 
       td {
         display: grid;
-        grid-template-columns: 104px 1fr;
+        grid-template-columns: minmax(138px, 42%) 1fr;
         gap: 12px;
         align-items: center;
         padding: 13px 14px;
@@ -467,9 +491,9 @@ bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
         </button>
       </div>
 
-      <h1 id="page-title">Paper ID 1245: Demo Audio Samples</h1>
+      <h1 id="page-title">Demo Audio Samples</h1>
       <p class="hero-subtitle">
-        Supplementary audio examples and embedding visualizations for an augmented dysarthric speech severity classification dataset.
+        Supplementary audio examples and t-SNE visualizations highlighting GAN-based vocoder augmentation and voice-cloning-based TTS augmentation for dysarthric speech severity classification.
       </p>
 
       <div class="meta-grid" aria-label="Page summary">
@@ -479,12 +503,16 @@ bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
         </div>
         <div class="meta-card">
           <span class="meta-label">Compared speech</span>
-          <span class="meta-value">Original, HiFi-GAN, BigVGAN</span>
+          <span class="meta-value">Original speech, GAN-based vocoder augmentation, voice-cloning-based TTS augmentation</span>
         </div>
         <div class="meta-card">
           <span class="meta-label">Visualization</span>
-          <span class="meta-value">t-SNE of WavLM embeddings</span>
+          <span class="meta-value">t-SNE visualizations</span>
         </div>
+      </div>
+
+      <div class="focus-note" role="note">
+        <strong>Augmentation focus:</strong> This supplementary page presents results at the method-category level, emphasizing <span>GAN-based vocoder augmentation</span> and <span>voice-cloning-based TTS augmentation</span> rather than model-brand labels.
       </div>
     </section>
 
@@ -500,7 +528,7 @@ bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
         <div class="section-heading">
           <div>
             <h2>TORGO audio samples</h2>
-            <p class="section-note">Representative examples comparing original dysarthric speech with HiFi-GAN and BigVGAN generated speech.</p>
+            <p class="section-note">Representative examples comparing original dysarthric speech with GAN-based vocoder augmentation outputs, with terminology aligned to the manuscript focus.</p>
           </div>
         </div>
 
@@ -510,29 +538,29 @@ bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
             <thead>
               <tr>
                 <th scope="col">Sample</th>
-                <th scope="col">Original</th>
-                <th scope="col">HiFi-GAN</th>
-                <th scope="col">BigVGAN</th>
+                <th scope="col">Original dysarthric speech</th>
+                <th scope="col">GAN-based vocoder augmentation<br><span class="column-subtitle">Vocoder condition A</span></th>
+                <th scope="col">GAN-based vocoder augmentation<br><span class="column-subtitle">Vocoder condition B</span></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><span class="sample-id">Sev_1_F04_0230</span></td>
-                <td data-label="Original"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="Original speech"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0230_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
               </tr>
               <tr>
                 <td><span class="sample-id">Sev_1_F04_0231</span></td>
-                <td data-label="Original"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="Original speech"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0231_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
               </tr>
               <tr>
                 <td><span class="sample-id">Sev_1_F04_0250</span></td>
-                <td data-label="Original"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="Original speech"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/TORGO/Sev_1_F04_Session2_wavHeadMic_0250_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
               </tr>
             </tbody>
           </table>
@@ -543,7 +571,7 @@ bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
         <div class="section-heading">
           <div>
             <h2>UA-Speech audio samples</h2>
-            <p class="section-note">Audio examples from UA-Speech, organized by sample identifier and vocoder condition.</p>
+            <p class="section-note">Audio examples from UA-Speech, organized by sample identifier and neural augmentation category.</p>
           </div>
         </div>
 
@@ -553,29 +581,29 @@ bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
             <thead>
               <tr>
                 <th scope="col">Sample</th>
-                <th scope="col">Original</th>
-                <th scope="col">HiFi-GAN</th>
-                <th scope="col">BigVGAN</th>
+                <th scope="col">Original dysarthric speech</th>
+                <th scope="col">GAN-based vocoder augmentation<br><span class="column-subtitle">Vocoder condition A</span></th>
+                <th scope="col">GAN-based vocoder augmentation<br><span class="column-subtitle">Vocoder condition B</span></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><span class="sample-id">F05_B1_C1_M3</span></td>
-                <td data-label="Original"><audio controls preload="metadata"><source src="samples/UA-SPEECH/F05_B1_C1_M3.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/F05_B1_C1_M3_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/F05_B1_C1_M3_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="Original speech"><audio controls preload="metadata"><source src="samples/UA-SPEECH/F05_B1_C1_M3.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/UA-SPEECH/F05_B1_C1_M3_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/UA-SPEECH/F05_B1_C1_M3_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
               </tr>
               <tr>
                 <td><span class="sample-id">M09_B1_CW63_M3</span></td>
-                <td data-label="Original"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B1_CW63_M3.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B1_CW63_M3_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B1_CW63_M3_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="Original speech"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B1_CW63_M3.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B1_CW63_M3_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B1_CW63_M3_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
               </tr>
               <tr>
                 <td><span class="sample-id">M09_B3_CW92_M3</span></td>
-                <td data-label="Original"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B3_CW92_M3.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="HiFi-GAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B3_CW92_M3_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
-                <td data-label="BigVGAN"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B3_CW92_M3_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="Original speech"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B3_CW92_M3.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B3_CW92_M3_hifigan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
+                <td data-label="GAN-based vocoder"><audio controls preload="metadata"><source src="samples/UA-SPEECH/M09_B3_CW92_M3_bigvgan.wav" type="audio/wav" />Your browser does not support the audio element.</audio></td>
               </tr>
             </tbody>
           </table>
@@ -597,31 +625,30 @@ bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
       <article class="panel" id="panel-tsne" role="tabpanel" aria-labelledby="tab-tsne" tabindex="0">
         <div class="section-heading">
           <div>
-            <h2>t-SNE visualization of WavLM embeddings</h2>
+            <h2>t-SNE visualization</h2>
             <p class="section-note">
-              Across TORGO, DAU-KDAH, and UA-Speech, BigVGAN and HiFi-GAN remain close to the original dysarthric speech in the t-SNE space, indicating preservation of prosodic and linguistic characteristics such as timing, rhythm, and imperfect articulation. In contrast, XTTS forms a more separated cluster, suggesting a tendency to normalize speech patterns and reduce dysarthria-specific cues.
+              Across TORGO, DAU-KDAH, and UA-Speech, GAN-based vocoder augmentation remains close to the original dysarthric speech in the t-SNE space, indicating preservation of prosodic and linguistic characteristics such as timing, rhythm, and imperfect articulation. In contrast, voice-cloning-based TTS augmentation forms a more separated cluster, suggesting a tendency to normalize speech patterns and reduce dysarthria-specific cues.
             </p>
           </div>
         </div>
 
         <div class="figure-grid">
           <figure>
-            <img src="tsne_TORGO.png" alt="t-SNE visualization for TORGO WavLM embeddings" loading="lazy" />
-            <figcaption>TORGO: WavLM embedding t-SNE visualization.</figcaption>
+            <img src="tsne_TORGO.png" alt="t-SNE visualization for TORGO" loading="lazy" />
+            <figcaption>TORGO: t-SNE visualization.</figcaption>
           </figure>
           <figure>
-            <img src="tsne_KDAH.png" alt="t-SNE visualization for DAU-KDAH WavLM embeddings" loading="lazy" />
-            <figcaption>DAU-KDAH: WavLM embedding t-SNE visualization.</figcaption>
+            <img src="tsne_KDAH.png" alt="t-SNE visualization for DAU-KDAH" loading="lazy" />
+            <figcaption>DAU-KDAH: t-SNE visualization.</figcaption>
           </figure>
           <figure>
-            <img src="tsne_UACorpus.png" alt="t-SNE visualization for UA-Speech WavLM embeddings" loading="lazy" />
-            <figcaption>UA-Speech: WavLM embedding t-SNE visualization.</figcaption>
+            <img src="tsne_UACorpus.png" alt="t-SNE visualization for UA-Speech" loading="lazy" />
+            <figcaption>UA-Speech: t-SNE visualization.</figcaption>
           </figure>
         </div>
       </article>
     </section>
 
-    <p class="footer-note">Prepared as a professional, responsive supplementary webpage for manuscript review.</p>
   </main>
 
   <script>
@@ -673,13 +700,3 @@ bash -lc cat > /mnt/data/speech_communication_repaired_site.html <<'HTML'
   </script>
 </body>
 </html>
-HTML
-python - <<'PY'
-from pathlib import Path
-import zipfile
-html = Path('/mnt/data/speech_communication_repaired_site.html')
-zip_path = Path('/mnt/data/speech_communication_repaired_site.zip')
-with zipfile.ZipFile(zip_path, 'w', compression=zipfile.ZIP_DEFLATED) as z:
-    z.write(html, arcname='index.html')
-print(html.stat().st_size, zip_path.stat().st_size)
-PY
