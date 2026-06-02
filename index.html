@@ -530,7 +530,7 @@
         </div>
         <div class="meta-card">
           <span class="meta-label">Visualization</span>
-          <span class="meta-value">Animated SSL-feature t-SNE GIF and dataset-level t-SNE visualizations</span>
+          <span class="meta-value">Overall SSL-feature t-SNE visualization</span>
         </div>
       </div>
 
@@ -541,7 +541,7 @@
         <button class="tab-button" id="tab-torgo" role="tab" type="button" aria-controls="panel-torgo" aria-selected="true">TORGO</button>
         <button class="tab-button" id="tab-ua" role="tab" type="button" aria-controls="panel-ua" aria-selected="false">UA-Speech</button>
         <button class="tab-button" id="tab-dau" role="tab" type="button" aria-controls="panel-dau" aria-selected="false">DAU-KDAH</button>
-        <button class="tab-button" id="tab-tsne" role="tab" type="button" aria-controls="panel-tsne" aria-selected="false">t-SNE plots + GIF</button>
+        <button class="tab-button" id="tab-tsne" role="tab" type="button" aria-controls="panel-tsne" aria-selected="false">t-SNE plots</button>
       </nav>
 
       <article class="panel active" id="panel-torgo" role="tabpanel" aria-labelledby="tab-torgo">
@@ -645,33 +645,17 @@
       <article class="panel" id="panel-tsne" role="tabpanel" aria-labelledby="tab-tsne" tabindex="0">
         <div class="section-heading">
           <div>
-            <h2>t-SNE visualization and SSL-feature animation</h2>
+            <h2>t-SNE visualization</h2>
             <p class="section-note">
-              The animated overall SSL-feature t-SNE visualization summarizes embedding-space behavior across feature extractors and augmentation conditions. Across TORGO, DAU-KDAH, and UA-Speech, GAN-based vocoder augmentation remains close to the original dysarthric speech in the t-SNE space, indicating preservation of prosodic and linguistic characteristics such as timing, rhythm, and imperfect articulation. In contrast, voice-cloning-based TTS augmentation forms a more separated cluster, suggesting a tendency to normalize speech patterns and reduce dysarthria-specific cues.
+              The overall SSL-feature t-SNE visualization summarizes embedding-space behavior across feature extractors and augmentation conditions. GAN-based vocoder augmentation remains closer to the original dysarthric speech space, while voice-cloning-based TTS augmentation forms a more separated cluster, indicating stronger normalization of dysarthria-specific cues.
             </p>
           </div>
         </div>
 
         <div class="figure-grid">
           <figure class="featured-figure">
-            <img src="samples/tsne_overall_ssl_features.gif" alt="Animated overall t-SNE visualization of SSL feature embeddings across dysarthric speech augmentation conditions" loading="lazy" />
-            <figcaption>
-              <span class="figure-tag">Animated GIF</span>
-              Overall SSL-feature t-SNE visualization across augmentation conditions and representation spaces.
-            </figcaption>
-          </figure>
-
-          <figure>
-            <img src="tsne_TORGO.png" alt="t-SNE visualization for TORGO" loading="lazy" />
-            <figcaption>TORGO: t-SNE visualization.</figcaption>
-          </figure>
-          <figure>
-            <img src="tsne_KDAH.png" alt="t-SNE visualization for DAU-KDAH" loading="lazy" />
-            <figcaption>DAU-KDAH: t-SNE visualization.</figcaption>
-          </figure>
-          <figure>
-            <img src="tsne_UACorpus.png" alt="t-SNE visualization for UA-Speech" loading="lazy" />
-            <figcaption>UA-Speech: t-SNE visualization.</figcaption>
+            <img src="samples/tsne_overall_ssl_features.gif" alt="Overall t-SNE visualization of SSL feature embeddings across dysarthric speech augmentation conditions" loading="lazy" />
+            <figcaption>Overall SSL-feature t-SNE visualization across augmentation conditions and representation spaces.</figcaption>
           </figure>
         </div>
       </article>
